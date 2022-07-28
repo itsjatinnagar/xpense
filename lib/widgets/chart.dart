@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'chart_bar.dart';
+
 class Chart extends StatelessWidget {
   const Chart({Key? key}) : super(key: key);
 
@@ -14,7 +16,16 @@ class Chart extends StatelessWidget {
         color: Color(0xFF42224A),
       ),
       child: Row(
-        children: [],
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          ChartBar(),
+          ChartBar(),
+          ChartBar(),
+          ChartBar(),
+          ChartBar(),
+          ChartBar(),
+          ChartBar(),
+        ],
       ),
     );
   }
