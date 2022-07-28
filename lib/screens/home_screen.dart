@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/chart.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -11,7 +13,11 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.all(6.0),
-        child: Column(children: []),
+        child: Column(
+          children: [
+            Chart(),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
