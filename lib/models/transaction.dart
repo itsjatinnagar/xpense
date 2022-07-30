@@ -48,7 +48,7 @@ class Expense {
   static Expense fromMap(Map<String, dynamic> map) => Expense(
         id: map[ExpenseFields.idField],
         amount: map[ExpenseFields.amountField],
-        dateTime: map[ExpenseFields.dateField],
+        dateTime: DateTime.parse(map[ExpenseFields.dateField]),
         title: map[ExpenseFields.titleField],
         transactionType: map[ExpenseFields.typeField] == 'expense'
             ? ExpenseType.expense

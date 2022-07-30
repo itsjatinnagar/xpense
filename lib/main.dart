@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import 'models/transaction_manager.dart';
 import 'screens/home_screen.dart';
 
 void main() {
@@ -11,9 +13,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Xpense',
-      home: HomeScreen(),
+    return ChangeNotifierProvider(
+      create: (context) => TransactionManager([]),
+      child: MaterialApp(
+        title: 'Xpense',
+        home: HomeScreen(),
+      ),
     );
   }
 }

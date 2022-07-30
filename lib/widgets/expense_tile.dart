@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../models/transaction.dart';
+
 class ExpenseTile extends StatelessWidget {
-  const ExpenseTile({Key? key}) : super(key: key);
+  const ExpenseTile(this.expense, {Key? key}) : super(key: key);
+
+  final Expense expense;
 
   @override
   Widget build(BuildContext context) {
@@ -11,9 +15,9 @@ class ExpenseTile extends StatelessWidget {
         color: Color(0xFFF2EDF3),
       ),
       child: ListTile(
-        title: Text('Title'),
-        subtitle: Text('Date'),
-        trailing: Text('Amount'),
+        title: Text(expense.title),
+        subtitle: Text(expense.dateTime.toString()),
+        trailing: Text('₹${expense.amount.toStringAsFixed(2)}'),
       ),
     );
   }

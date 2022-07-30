@@ -4,7 +4,7 @@ import 'package:xpense/models/transaction.dart';
 import 'expense_tile.dart';
 
 class TodayExpenseListView extends StatelessWidget {
-  final List<Transaction> list;
+  final List<Expense> list;
 
   const TodayExpenseListView({required this.list, Key? key}) : super(key: key);
 
@@ -17,7 +17,7 @@ class TodayExpenseListView extends StatelessWidget {
             )
           : ListView.separated(
               itemCount: list.length,
-              itemBuilder: (context, index) => ExpenseTile(),
+              itemBuilder: (context, index) => ExpenseTile(list[index]),
               separatorBuilder: (context, index) => SizedBox(height: 6),
             ),
     );

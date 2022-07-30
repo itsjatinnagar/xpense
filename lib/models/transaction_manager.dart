@@ -5,11 +5,11 @@ import 'transaction.dart';
 class TransactionManager extends ChangeNotifier {
   TransactionManager(this._list);
 
-  final List<Transaction> _list;
+  final List<Expense> _list;
 
-  List<Transaction> get transactions => List.unmodifiable(_list);
+  List<Expense> get transactions => List.unmodifiable(_list);
 
-  void addTransaction(Transaction transaction) {
+  void addTransaction(Expense transaction) {
     // Database Insert
     _list.add(transaction);
 

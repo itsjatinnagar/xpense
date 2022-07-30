@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:xpense/models/transaction.dart';
+import 'package:provider/provider.dart';
+
+import '../models/transaction.dart';
+import '../models/transaction_manager.dart';
 
 class AddTransactionScreen extends StatefulWidget {
   const AddTransactionScreen({Key? key}) : super(key: key);
@@ -12,10 +15,10 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _amountController = TextEditingController();
+  final today = DateTime.now();
 
-  TransactionType transactionType = TransactionType.expense;
-  DateTime date =
-      DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
+  late ExpenseType transactionType;
+  late DateTime date;
 
   void datePicker(BuildContext context) async {
     DateTime? selectedDate = await showDatePicker(
@@ -32,6 +35,42 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
     setState(
       () => date = selectedDate,
     );
+  }
+
+  void submit() {
+    if (_formKey.currentState!.validate()) {
+      final transaction = Expense(
+        amount: double.parse(_amountController.text),
+        dateTime: date,
+        title: _titleController.text,
+        transactionType: transactionType,
+      );
+
+      Provider.of<TransactionManager>(context, listen: false)
+          .addTransaction(transaction);
+
+      setState(initialize);
+    }
+  }
+
+  void initialize() {
+    _titleController.clear();
+    _amountController.clear();
+    transactionType = ExpenseType.expense;
+    date = DateTime(today.year, today.month, today.day);
+  }
+
+  @override
+  void initState() {
+    initialize();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _titleController.dispose();
+    _amountController.dispose();
+    super.dispose();
   }
 
   @override
@@ -54,11 +93,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
             buildAmountField(),
             SizedBox(height: 16),
             ElevatedButton(
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  print('Validated');
-                }
-              },
+              onPressed: submit,
               child: Text('ADD'),
             ),
           ],
@@ -100,20 +135,20 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                   'Expense',
                   style: TextStyle(color: Colors.white),
                 ),
-                selected: transactionType == TransactionType.expense,
+                selected: transactionType == ExpenseType.expense,
                 selectedColor: Color(0xFF42224A),
                 onSelected: (_) =>
-                    setState(() => transactionType = TransactionType.expense),
+                    setState(() => transactionType = ExpenseType.expense),
               ),
               ChoiceChip(
                 label: Text(
                   'Income',
                   style: TextStyle(color: Colors.white),
                 ),
-                selected: transactionType == TransactionType.income,
+                selected: transactionType == ExpenseType.income,
                 selectedColor: Color(0xFF42224A),
                 onSelected: (_) =>
-                    setState(() => transactionType = TransactionType.income),
+                    setState(() => transactionType = ExpenseType.income),
               ),
             ],
           ),

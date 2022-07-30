@@ -52,6 +52,7 @@ class ExpenseDatabaseManager {
       expenseTableName,
       columns: ExpenseFields.columns,
       where: '${ExpenseFields.typeField} = expense',
+      orderBy: '${ExpenseFields.dateField} DESC',
     );
 
     if (maps.isNotEmpty) {
