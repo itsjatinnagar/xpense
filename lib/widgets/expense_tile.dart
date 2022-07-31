@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xpense/theme.dart';
 
 import '../models/transaction.dart';
 
@@ -11,8 +12,8 @@ class ExpenseTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20.0),
-        color: Color(0xFFF2EDF3),
+        borderRadius: kBorderRadius,
+        color: kGreyishColor,
       ),
       child: ListTile(
         title: Text(expense.title),

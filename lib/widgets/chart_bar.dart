@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xpense/theme.dart';
 
 class ChartBar extends StatelessWidget {
   static const double barHeight = 122;
@@ -26,7 +27,9 @@ class ChartBar extends StatelessWidget {
             constraints: BoxConstraints(minWidth: 10, maxWidth: 16),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20.0),
-              color: amount == 0.0 ? Colors.grey : Color(0xFFEF8767),
+              color: amount == 0.0
+                  ? kGreyishColor.withOpacity(0.2)
+                  : kSecondaryColor,
             ),
           ),
           SizedBox(height: 2),

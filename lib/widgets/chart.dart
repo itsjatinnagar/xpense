@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xpense/theme.dart';
 
 import 'chart_bar.dart';
 
@@ -25,8 +26,8 @@ class Chart extends StatelessWidget {
       height: 160,
       width: double.infinity,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20.0),
-        color: Color(0xFF42224A),
+        borderRadius: kBorderRadius,
+        color: kPrimaryColor,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

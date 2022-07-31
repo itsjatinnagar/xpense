@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'models/transaction_manager.dart';
 import 'screens/home_screen.dart';
+import 'theme.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       create: (context) => TransactionManager([]),
       child: MaterialApp(
         title: 'Xpense',
+        theme: kThemeData,
         home: HomeScreen(),
       ),
     );

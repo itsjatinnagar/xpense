@@ -47,7 +47,6 @@ class HomeScreen extends StatelessWidget {
         groupedExpenses(Provider.of<TransactionManager>(context).transactions);
     print(groupedExpenseList);
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text('Home'),
       ),
