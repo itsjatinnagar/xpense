@@ -51,7 +51,7 @@ class ExpenseDatabaseManager {
     final maps = await db.query(
       expenseTableName,
       columns: ExpenseFields.columns,
-      where: '${ExpenseFields.typeField} = expense',
+      where: '${ExpenseFields.typeField} = "expense"',
       orderBy: '${ExpenseFields.dateField} DESC',
     );
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:xpense/theme.dart';
 
 import '../models/transaction.dart';
 import '../models/transaction_manager.dart';
@@ -24,7 +25,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
     DateTime? selectedDate = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
-      firstDate: DateTime(2022, 7, 1),
+      firstDate: DateTime(2022, 8, 1),
       lastDate: DateTime.now(),
     );
 
@@ -108,10 +109,6 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
           Text('Title'),
           TextFormField(
             controller: _titleController,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
-            ),
             textCapitalization: TextCapitalization.words,
             keyboardType: TextInputType.text,
             validator: (value) {
@@ -166,7 +163,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
               border: Border.all(
                 color: Colors.grey,
               ),
-              borderRadius: BorderRadius.circular(20.0),
+              borderRadius: kBorderRadius,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -188,10 +185,6 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
           Text('Amount'),
           TextFormField(
             controller: _amountController,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
-            ),
             keyboardType: TextInputType.number,
             validator: (value) {
               if (value == '') {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/transaction.dart';
 import '../models/transaction_manager.dart';
@@ -13,8 +14,7 @@ class HomeScreen extends StatelessWidget {
   List<Map<String, dynamic>> groupedExpenses(List<Expense> expenses) {
     final List<Map<String, dynamic>> list = [];
 
-    final firstDate =
-        DateTime(2022, 7, 22); //SharedPreferences registeredOn datetime
+    final firstDate = DateTime(2022, 8, 1);
     DateTime today =
         DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
 
@@ -45,7 +45,6 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final groupedExpenseList =
         groupedExpenses(Provider.of<TransactionManager>(context).transactions);
-    print(groupedExpenseList);
     return Scaffold(
       appBar: AppBar(
         title: Text('Home'),

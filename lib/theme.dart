@@ -28,10 +28,20 @@ final ThemeData kThemeData = ThemeData(
     elevation: 1,
     toolbarHeight: 50,
   ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: TextButton.styleFrom(
+      padding: EdgeInsets.symmetric(vertical: 10),
+      shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
+    ),
+  ),
   floatingActionButtonTheme: FloatingActionButtonThemeData(
     backgroundColor: kSecondaryColor,
     foregroundColor: Colors.white,
     shape: RoundedRectangleBorder(borderRadius: kBorderRadius),
+  ),
+  inputDecorationTheme: InputDecorationTheme(
+    border: OutlineInputBorder(borderRadius: kBorderRadius),
+    contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
   ),
   primaryColor: kPrimaryColor,
   primarySwatch: kPrimarySwatch,
