@@ -3,10 +3,10 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:xpense/databases/expense_db.dart';
+import 'package:xpense/xpense_app.dart';
 
 import 'models/transaction.dart';
 import 'models/transaction_manager.dart';
-import 'screens/home_screen.dart';
 import 'theme.dart';
 
 Future<List<Expense>> initialize(WidgetsBinding widgetsBinding) async {
@@ -23,6 +23,7 @@ Future<List<Expense>> initialize(WidgetsBinding widgetsBinding) async {
   } else {
     dbRecords = await ExpenseDatabaseManager.instance.readAllExpenses();
   }
+  await Future.delayed(Duration(milliseconds: 3000));
 
   widgetsBinding.allowFirstFrame();
   return dbRecords;
@@ -33,7 +34,9 @@ Future main() async {
     SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
       statusBarBrightness: Brightness.light,
-      statusBarIconBrightness: Brightness.light,
+      statusBarIconBrightness: Brightness.dark,
+      systemNavigationBarColor: Colors.white,
+      systemNavigationBarIconBrightness: Brightness.dark,
     ),
   );
   final data = await initialize(WidgetsFlutterBinding.ensureInitialized());
@@ -53,7 +56,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Xpense',
         theme: kThemeData,
-        home: HomeScreen(),
+        home: XpenseApp(),
       ),
     );
   }
