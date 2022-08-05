@@ -49,7 +49,8 @@ class AllTransactionScreen extends StatelessWidget {
             : buildExpenseList(groupedExpenses));
   }
 
-  Widget buildExpenseList(groupedExpenses) => ListView(
+  Widget buildExpenseList(List<Map<String, dynamic>> groupedExpenses) =>
+      ListView(
         children: groupedExpenses
             .map(
               (e) => Column(
