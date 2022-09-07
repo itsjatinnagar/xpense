@@ -4,9 +4,7 @@ import 'package:xpense/databases/expense_db.dart';
 import 'transaction.dart';
 
 class TransactionManager extends ChangeNotifier {
-  TransactionManager(this._list);
-
-  final List<Expense> _list;
+  late List<Expense> _list;
 
   List<Map<String, dynamic>> get groupedTransactions {
     final DateTime registeredOn = DateTime(2022, 8, 1);
@@ -38,4 +36,7 @@ class TransactionManager extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  Future<void> fetchTransactions() async =>
+      _list = await ExpenseDatabaseManager.instance.readAllExpenses();
 }
