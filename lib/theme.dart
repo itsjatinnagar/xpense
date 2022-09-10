@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 final MaterialColor kPrimarySwatch =
     MaterialColor(0xFF42224A, const <int, Color>{
@@ -19,6 +20,7 @@ const Color kDarkPurpleColor = Color(0xFF120216);
 const Color kGreyishColor = Color(0xFFF2EDF3);
 
 final BorderRadius kBorderRadius = BorderRadius.circular(20.0);
+final DateFormat kDateFormat = DateFormat.yMMMMd();
 
 final ThemeData kThemeData = ThemeData(
   appBarTheme: AppBarTheme(

@@ -17,7 +17,6 @@ class ExpenseTile extends StatelessWidget {
       ),
       child: ListTile(
         title: Text(expense.title),
-        subtitle: Text(expense.dateTime.toString()),
         trailing: Text('₹${expense.amount.toStringAsFixed(2)}'),
       ),
     );

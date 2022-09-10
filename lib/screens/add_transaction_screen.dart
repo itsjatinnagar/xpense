@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:xpense/theme.dart';
 
 import '../models/transaction.dart';
 import '../models/transaction_manager.dart';
+import '../theme.dart';
 
 class AddTransactionScreen extends StatefulWidget {
   const AddTransactionScreen({Key? key}) : super(key: key);
@@ -168,7 +168,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(date.toString()),
+                Text(kDateFormat.format(date)),
                 IconButton(
                   onPressed: () => datePicker(context),
                   icon: Icon(Icons.watch_later_outlined),
