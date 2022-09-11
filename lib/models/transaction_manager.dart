@@ -37,6 +37,16 @@ class TransactionManager extends ChangeNotifier {
     notifyListeners();
   }
 
+  void deleteTransaction(Expense transaction) async {
+    bool isDeleted =
+        await ExpenseDatabaseManager.instance.delete(transaction.id!);
+    if (isDeleted) {
+      _list.remove(transaction);
+    }
+
+    notifyListeners();
+  }
+
   Future<void> fetchTransactions() async =>
       _list = await ExpenseDatabaseManager.instance.readAllExpenses();
 }

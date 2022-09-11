@@ -45,6 +45,22 @@ class ExpenseDatabaseManager {
     return expense.copy(id: id);
   }
 
+  Future<bool> delete(int id) async {
+    final db = await instance.database;
+
+    final result = await db.delete(
+      expenseTableName,
+      where: '${ExpenseFields.idField} = ?',
+      whereArgs: [id],
+    );
+
+    if (result <= 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   Future<List<Expense>> readAllExpenses() async {
     final db = await instance.database;
 
