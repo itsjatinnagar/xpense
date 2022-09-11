@@ -115,6 +115,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
               if (value == '') {
                 return 'Title cannot be empty';
               }
+              return null;
             },
           ),
         ],
@@ -193,6 +194,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                   double.parse(value) < 0) {
                 return 'Invalid Amount';
               }
+              return null;
             },
           ),
         ],
