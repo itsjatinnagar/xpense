@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:xpense/screens/all_transactions.dart';
 import 'package:xpense/screens/home_screen.dart';
+import 'package:xpense/theme.dart';
 
 import 'screens/add_transaction_screen.dart';
 
@@ -22,22 +23,12 @@ class _XpenseAppState extends State<XpenseApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: screens[screenIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        currentIndex: screenIndex,
-        elevation: 1,
-        onTap: (value) => setState(() => screenIndex = value),
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_filled),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list),
-            label: 'All Expenses',
-          ),
+      bottomNavigationBar: NavigationBar(
+        onDestinationSelected: (value) => setState(() => screenIndex = value),
+        selectedIndex: screenIndex,
+        destinations: [
+          NavigationDestination(icon: Icon(Icons.home_outlined), label: 'Home'),
+          NavigationDestination(icon: Icon(Icons.list), label: 'All Expenses'),
         ],
       ),
       floatingActionButton: FloatingActionButton(

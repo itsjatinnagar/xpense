@@ -45,6 +45,10 @@ final ThemeData kThemeData = ThemeData(
     border: OutlineInputBorder(borderRadius: kBorderRadius),
     contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
   ),
+  navigationBarTheme: NavigationBarThemeData(
+    height: 60,
+    labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+  ),
   primaryColor: kPrimaryColor,
   primarySwatch: kPrimarySwatch,
   scaffoldBackgroundColor: Colors.white,
