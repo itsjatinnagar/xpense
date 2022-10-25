@@ -4,6 +4,7 @@ import 'package:xpense/models/transaction_manager.dart';
 import 'package:xpense/widgets/expense_list_view.dart';
 
 import '../theme.dart';
+import '../widgets/header.dart';
 
 class AllTransactionScreen extends StatelessWidget {
   const AllTransactionScreen({Key? key}) : super(key: key);
@@ -58,7 +59,10 @@ class AllTransactionScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(kDateFormat.format(e['date'])),
+                  Header(
+                    leftLabel: kDateFormat.format(e['date']),
+                    rightLabel: '₹${e['spending'].toStringAsFixed(2)}',
+                  ),
                   SizedBox(height: 6),
                   ExpenseListView(e['expenses']),
                   SizedBox(height: 16),

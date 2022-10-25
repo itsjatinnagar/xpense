@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../models/transaction_manager.dart';
+import '../widgets/header.dart';
 import '../widgets/today_expense_list_view.dart';
 import '../widgets/chart.dart';
 
@@ -21,7 +22,11 @@ class HomeScreen extends StatelessWidget {
           children: [
             Chart(weeklyExpenseList),
             SizedBox(height: 16),
-            header(weeklyExpenseList[0]['spending']),
+            Header(
+              leftLabel: 'Today\'s Expenses',
+              rightLabel:
+                  '₹${weeklyExpenseList[0]['spending'].toStringAsFixed(2)}',
+            ),
             SizedBox(height: 8),
             TodayExpenseListView(
               list: weeklyExpenseList[0]['expenses'],
@@ -31,12 +36,4 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
-
-  Widget header(double spending) => Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text('Today\'s Expenses'),
-          Text('₹${spending.toStringAsFixed(2)}'),
-        ],
-      );
 }
