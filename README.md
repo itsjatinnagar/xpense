@@ -1,8 +1,3 @@
-# Xpense
+**This project has migrated to [github.com/itsjatinnagar/spendwise](https://github.com/itsjatinnagar/spendwise)**
 
-An easy-to-use expense tracker mobile application with beautiful user interface.
-
-## Author
-
--   Website - [Jatin Nagar](https://github.com/itsjatinnagar)
--   Twitter - [@itsjatinnagar](https://www.twitter.com/itsjatinnagar)
+We recommend switching to the Spendwise repository for the latest updates and features.
